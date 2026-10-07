@@ -1,4 +1,6 @@
-const KEY='mohit_editable_v1';let S=JSON.parse(localStorage.getItem(KEY)||'{}');
+const KEY='mohit_editable_v1';
+let S={};
+try{S=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){S={};localStorage.removeItem(KEY)}
 const $=s=>document.querySelector(s), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function save(){localStorage.setItem(KEY,JSON.stringify(S))}
 function apply(){
@@ -13,7 +15,8 @@ function apply(){
 }
 function typeTagline(){const el=$('[data-tagline]');if(!el)return;const text=S.tagline||'Gamer • Creator • Student • 5x_gamerr';if(S.typing==='off'){el.textContent=text;return}let i=0;el.textContent='';clearInterval(window.__typing);window.__typing=setInterval(()=>{el.textContent=text.slice(0,++i);if(i>=text.length)clearInterval(window.__typing)},45)}
 window.addEventListener('load',()=>{if(S.loader==='off')$('#loader').style.display='none';else setTimeout(()=>$('#loader').style.display='none',650);setTimeout(typeTagline,700)});
-const settingsEl=$('#settings'); const ownerUnlockEl=$('#ownerUnlock'); if(ownerUnlockEl){ownerUnlockEl.setAttribute('title','Owner Settings');} $('.close').onclick=()=>settingsEl.classList.remove('open'); $('.backdrop').onclick=()=>settingsEl.classList.remove('open');
+const settingsEl=$('#settings'); const ownerUnlockEl=$('#ownerUnlock'); if(ownerUnlockEl){ownerUnlockEl.setAttribute('title','Owner Settings');}
+if($('.close'))$('.close').onclick=()=>settingsEl.classList.remove('open'); if($('.backdrop'))$('.backdrop').onclick=()=>settingsEl.classList.remove('open');
 $('#themeBtn').onclick=()=>{S.light=!S.light;save();apply()};
 $('#themeSelect').onchange=e=>{S.theme=e.target.value;save();apply()};$('#animSelect').onchange=e=>{S.anim=e.target.value;save();apply()};
 $('#photoInput').onchange=e=>{let f=e.target.files[0];if(!f)return;if(f.size>4e6)return alert('Photo 4MB से कम रखें');let r=new FileReader();r.onload=()=>{S.photo=r.result;save();apply()};r.readAsDataURL(f)};
@@ -30,9 +33,20 @@ function prepareForm(form,subject){ if(!form) return; form.onsubmit=e=>{ if(!S.e
 prepareForm($('#challengeForm'),'New Gaming Profile Details - 5x_gamerr');
 prepareForm($('#contactForm'),'New Contact Details - 5x_gamerr');
 prepareForm($('#mainContactForm'),'New Contact Message - 5x_gamerr');
-$('#editAboutBtn').onclick=()=>{$('#settings').classList.add('open');$('#aboutInput').focus()};$('#reset').onclick=()=>{if(confirm('Reset all local edits?')){localStorage.removeItem(KEY);location.reload()}};
+$('#reset').onclick=()=>{if(confirm('Reset all local edits?')){localStorage.removeItem(KEY);location.reload()}};
 // lightweight particle background
 const pc=$('#particles'),ctx=pc.getContext('2d');let pts=[];function resize(){pc.width=innerWidth;pc.height=innerHeight;pts=Array.from({length:Math.min(65,Math.floor(innerWidth/18))},()=>({x:Math.random()*pc.width,y:Math.random()*pc.height,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25,r:Math.random()*1.5+.4}))}function draw(){if(S.particles==='off'){requestAnimationFrame(draw);return}ctx.clearRect(0,0,pc.width,pc.height);ctx.fillStyle='rgba(0,234,255,.65)';for(const p of pts){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>pc.width)p.vx*=-1;if(p.y<0||p.y>pc.height)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill()}requestAnimationFrame(draw)}addEventListener('resize',resize);resize();draw();
 // subtle cursor glow on desktop
 addEventListener('pointermove',e=>{const g=$('#cursorGlow');if(S.cursor==='off'||innerWidth<700){g.style.opacity=0;return}g.style.opacity=1;g.style.transform=`translate(${e.clientX-90}px,${e.clientY-90}px)`});
 setForm();apply();renderW();renderH();
+// Owner-only settings gate
+const OWNER_PIN='7568';
+function ownerOpen(){const entered=prompt('Owner Settings PIN:');if(entered===OWNER_PIN){$('#settings').classList.add('open');setForm();}else if(entered!==null)alert('Wrong PIN. Settings केवल Owner PIN से खुलेगी।');}
+if($('#settingsBtn')) $('#settingsBtn').onclick=ownerOpen;
+if($('#ownerUnlock')) $('#ownerUnlock').onclick=ownerOpen;
+let ownerTaps=0,ownerTimer;$('.brand').addEventListener('click',e=>{ownerTaps++;clearTimeout(ownerTimer);ownerTimer=setTimeout(()=>ownerTaps=0,1000);if(ownerTaps>=5){ownerTaps=0;e.preventDefault();ownerOpen();}});
+document.addEventListener('keydown',e=>{if(e.ctrlKey&&e.shiftKey&&e.key.toLowerCase()==='s'){e.preventDefault();ownerOpen();}});
+$('#editAboutBtn').onclick=()=>{const entered=prompt('Owner Settings PIN:');if(entered===OWNER_PIN){$('#settings').classList.add('open');setForm();$('#aboutInput').focus();}else if(entered!==null)alert('Wrong PIN. About Edit केवल Owner PIN से खुलेगा।')};
+// Live India date/time
+function updateClock(){const now=new Date();const time=new Intl.DateTimeFormat('en-IN',{timeZone:'Asia/Kolkata',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true}).format(now);const date=new Intl.DateTimeFormat('en-IN',{timeZone:'Asia/Kolkata',weekday:'long',day:'2-digit',month:'long',year:'numeric'}).format(now);if($('#liveTime'))$('#liveTime').textContent=time;if($('#liveDate'))$('#liveDate').textContent=date;}
+updateClock();setInterval(updateClock,1000);

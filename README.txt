@@ -1,31 +1,21 @@
-MOHIT • 5X GAMERR — EDITABLE NEON GAMING PORTFOLIO
+MOHIT NEON GAMING PORTFOLIO — FINAL OWNER BUILD
 
-This ZIP keeps the previous editable neon gaming website and adds a few useful optional controls.
+Included:
+- Real-time India clock (IST) with live date
+- Owner-only Settings PIN protection (PIN: 7568)
+- About Edit is also owner-protected
+- Fixed/no gallery zoom
+- Exactly 3 gaming gallery photos
+- Gaming Profile Send form: Name, Game UID, Username/Gamer Tag, Instagram Profile, Message
+- Separate Contact Send form: Name, WhatsApp Number, Email, Message
+- FormSubmit + custom Thank You page
+- Thank You page has Back to Profile + Back to Home and auto-returns to Home
+- Profile photo upload, gaming song upload/playback, neon themes, gallery animations
+- Gaming history, winner shots, share, particles, cursor glow, typewriter and loader options
+- Responsive mobile/tablet/desktop design
 
-EXISTING FEATURES KEPT:
-- Neon themes
-- Gallery animations + fixed/no-zoom gallery
-- Profile photo upload
-- Gaming song upload + play/pause
-- Name, tagline and About editing
-- FormSubmit email setting
-- Challenge Me form
-- Website Share button
-- Winner Shots
-- Gaming History
-- Cyber/hacking-style profile scan animation
+OWNER SETTINGS:
+Tap the Settings button and enter PIN 7568. About Edit also requires the same PIN.
 
-NEW EXTRA OPTIONS:
-- Gaming UID shown on Gaming Profile
-- Custom Online Status
-- Lightweight background particles ON/OFF
-- Cursor neon glow ON/OFF (desktop)
-- Tagline typewriter effect ON/OFF
-- Welcome loader ON/OFF
-- Reduce Motion mode ON/OFF
-- Working Dark/Light toggle button in the top bar
-
-IMPORTANT:
-Settings are stored in this browser using localStorage. They do not automatically edit the files on GitHub for other visitors.
-FormSubmit still needs your email to be configured in Settings.
-The challenge form stores submissions locally in the browser; it does not send them to an owner email.
+FORMS:
+Set your FormSubmit recipient email once inside Owner Settings. FormSubmit requires the recipient to be activated/confirmed the first time.
