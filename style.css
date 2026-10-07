@@ -48,3 +48,27 @@ body.light-mode{--bg:#eef5ff;--card:rgba(255,255,255,.78);--text:#101827;--muted
 .contact-link b,.contact-link small{display:block}.contact-link small{opacity:.65;margin-top:4px}
 .gallery-edit-btn,.winner-add-btn{margin-left:auto}.section-title{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 @media(max-width:700px){.contact-links{grid-template-columns:1fr}.gallery-edit-btn{width:100%;margin-left:0}}
+
+/* Separate social buttons */
+.socials{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.social-btn{display:inline-flex!important;align-items:center;justify-content:center;gap:7px;padding:11px 15px!important;border:1px solid rgba(255,255,255,.16)!important;border-radius:14px!important;text-decoration:none!important;font-weight:800!important;letter-spacing:.4px;background:rgba(10,14,28,.62);box-shadow:0 0 18px rgba(0,234,255,.08);transition:transform .2s ease,box-shadow .2s ease,filter .2s ease}
+.social-btn:hover{transform:translateY(-2px);box-shadow:0 0 22px rgba(0,234,255,.24);filter:brightness(1.15)}
+.social-btn.whatsapp{border-color:rgba(50,255,130,.38)!important}.social-btn.instagram{border-color:rgba(255,80,190,.38)!important}.social-btn.email{border-color:rgba(80,180,255,.38)!important}.social-btn.call{border-color:rgba(255,170,70,.38)!important}
+.gallery-owner-actions{display:flex;flex-wrap:wrap;gap:8px;margin-left:auto}
+.gallery-edit-btn{margin:0!important}
+@media(max-width:700px){.section-title{align-items:flex-start;flex-wrap:wrap}.gallery-owner-actions{width:100%;margin-left:0}.social-btn{flex:1 1 140px}}
+
+/* Extra neon themes */
+body.theme-red{--accent:#ff304f;--accent2:#ff6a00;--glow:rgba(255,48,79,.45)}
+body.theme-red .section-title h2 span,body.theme-red h1 span,body.theme-red .brand b{color:#ff304f;text-shadow:0 0 18px rgba(255,48,79,.6)}
+body.theme-red .btn.primary,body.theme-red .mini-btn{border-color:rgba(255,48,79,.6);box-shadow:0 0 18px rgba(255,48,79,.2)}
+body.theme-red .glass{border-color:rgba(255,48,79,.22)}
+body.theme-red{background:radial-gradient(circle at 20% 10%,rgba(255,48,79,.12),transparent 30%),radial-gradient(circle at 85% 70%,rgba(255,106,0,.1),transparent 28%),#05070d}
+body.theme-ultraviolet{--accent:#a855ff;--accent2:#ff3df2;--glow:rgba(168,85,255,.45)}
+body.theme-ultraviolet .section-title h2 span,body.theme-ultraviolet h1 span,body.theme-ultraviolet .brand b{color:#c084fc;text-shadow:0 0 18px rgba(192,132,252,.7)}
+body.theme-ultraviolet .glass{border-color:rgba(192,132,252,.24)}
+body.theme-cyber-orange{--accent:#ff8a00;--accent2:#00eaff;--glow:rgba(255,138,0,.4)}
+body.theme-cyber-orange .section-title h2 span,body.theme-cyber-orange h1 span,body.theme-cyber-orange .brand b{color:#ff9d2e;text-shadow:0 0 18px rgba(255,157,46,.65)}
+body.theme-cyber-orange .glass{border-color:rgba(255,138,0,.22)}
+body.theme-electric{--accent:#00f5ff;--accent2:#ff00a8;--glow:rgba(0,245,255,.45)}
+body.theme-electric .section-title h2 span,body.theme-electric h1 span,body.theme-electric .brand b{color:#00f5ff;text-shadow:0 0 18px rgba(0,245,255,.7)}

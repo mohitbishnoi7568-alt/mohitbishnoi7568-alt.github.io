@@ -42,30 +42,47 @@ function renderW(){let a=S.winners||[];$('#winnerGrid').innerHTML=a.map((x,i)=>`
 const winnerPublicBtn=$('#addWinnerPublic'),winnerGalleryInput=$('#winnerGalleryInput');if(winnerPublicBtn&&winnerGalleryInput){winnerPublicBtn.onclick=()=>{const entered=prompt('Owner PIN for Winner Shot:');if(entered==='7568')winnerGalleryInput.click();else if(entered!==null)alert('Wrong PIN. Winner Shot केवल Owner PIN से add होगा।')};winnerGalleryInput.onchange=e=>{const f=e.target.files[0];if(!f)return;if(f.size>4e6){alert('Photo 4MB से कम रखें');winnerGalleryInput.value='';return}const r=new FileReader();r.onload=()=>{const cap=prompt('Winner caption:', 'Winner Shot');if(cap===null){winnerGalleryInput.value='';return}S.winners=S.winners||[];S.winners.push({img:r.result,cap:cap.trim()||'Winner Shot'});save();renderW();winnerGalleryInput.value='';};r.readAsDataURL(f)}}function renderH(){let a=S.history||[];$('#historyGrid').innerHTML=a.map(x=>`<article class="history-card"><b>${esc(x.game)}</b><p>UID: ${esc(x.uid)}</p><p>Username: ${esc(x.user)}</p></article>`).join('')||'<p class="muted">Gaming history will appear here.</p>'}
 apply();renderW();renderH();
 
-// Owner-only gallery photo replacement: choose any photo for each of the 3 slots.
+
+// Owner-only gallery photo replacement: each of the 3 gallery photos has its own button.
 (function(){
-  const btn=$('#editGalleryBtn');
-  if(!btn)return;
-  const slots=[['#galleryImg1','#galleryInput1'],['#galleryImg2','#galleryInput2'],['#galleryImg3','#galleryInput3']];
-  btn.onclick=()=>{
-    const entered=prompt('Owner PIN for Gallery Photos:');
-    if(entered!=='7568'){if(entered!==null)alert('Wrong PIN. Gallery Photos केवल Owner PIN से बदल सकते हैं।');return;}
-    const n=prompt('कौन-सी फोटो बदलनी है? 1, 2 या 3','1');
-    const i=Number(n)-1;
-    if(!Number.isInteger(i)||i<0||i>2)return;
-    const input=$(slots[i][1]);
-    input.onchange=e=>{
-      const f=e.target.files&&e.target.files[0]; if(!f)return;
-      if(f.size>5e6){alert('Photo 5MB से कम रखें');input.value='';return;}
-      const r=new FileReader();
-      r.onload=()=>{
-        $(slots[i][0]).src=r.result;
-        try{localStorage.setItem('mohit_gallery_'+(i+1),r.result)}catch(err){alert('Photo बहुत बड़ी है, दूसरी photo चुनें।')}
-        input.value='';
+  const slots=[
+    ['#editGallery1Btn','#galleryInput1','#galleryImg1'],
+    ['#editGallery2Btn','#galleryInput2','#galleryImg2'],
+    ['#editGallery3Btn','#galleryInput3','#galleryImg3']
+  ];
+  slots.forEach((slot,i)=>{
+    const btn=$(slot[0]), input=$(slot[1]), img=$(slot[2]);
+    if(!btn||!input||!img)return;
+    btn.onclick=()=>{
+      const entered=prompt('Owner PIN for Gallery Photo '+(i+1)+':');
+      if(entered!=='7568'){if(entered!==null)alert('Wrong PIN. Gallery Photo केवल Owner PIN से बदली जा सकती है।');return;}
+      input.onchange=e=>{
+        const f=e.target.files&&e.target.files[0]; if(!f)return;
+        if(f.size>5e6){alert('Photo 5MB से कम रखें');input.value='';return;}
+        const r=new FileReader();
+        r.onload=()=>{try{localStorage.setItem('mohit_gallery_'+(i+1),r.result);img.src=r.result;alert('Gallery Photo '+(i+1)+' save हो गई।')}catch(err){alert('Photo बहुत बड़ी है, दूसरी photo चुनें।')}input.value='';};
+        r.readAsDataURL(f);
       };
-      r.readAsDataURL(f);
+      input.click();
     };
-    input.click();
+    const saved=localStorage.getItem('mohit_gallery_'+(i+1));
+    if(saved)img.src=saved;
+  });
+})();
+
+// Owner-only full gaming profile editor: name, game, UID, Instagram and status.
+(function(){
+  const btn=$('#editGamingProfileBtn');
+  if(!btn)return;
+  btn.onclick=()=>{
+    const entered=prompt('Owner PIN for Gaming Profile:');
+    if(entered!=='7568'){if(entered!==null)alert('Wrong PIN. Profile Edit केवल Owner PIN से खुलेगा।');return;}
+    const name=prompt('Gaming Name:',S.gamingName||S.name||'Mohit'); if(name===null)return;
+    const game=prompt('Game:',S.gamingGame||'FREE FIRE'); if(game===null)return;
+    const uid=prompt('Game UID:',S.uid||''); if(uid===null)return;
+    const ig=prompt('Instagram username:',S.gamingIg||'@5x_gamerr'); if(ig===null)return;
+    const status=prompt('Status:',S.status||'ONLINE'); if(status===null)return;
+    S.gamingName=name.trim()||'Mohit'; S.gamingGame=game.trim()||'FREE FIRE'; S.uid=uid.trim(); S.gamingIg=ig.trim()||'@5x_gamerr'; S.status=status.trim()||'ONLINE';
+    save();apply();alert('Gaming Profile save हो गया।');
   };
-  slots.forEach((x,i)=>{const saved=localStorage.getItem('mohit_gallery_'+(i+1));if(saved)$(x[0]).src=saved;});
 })();
