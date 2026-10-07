@@ -4,3 +4,36 @@ body.light-mode{--bg:#eef5ff;--card:rgba(255,255,255,.78);--text:#101827;--muted
 
 .send-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;max-width:1100px;margin:25px auto 0}.send-card{padding:24px}.send-card h3{margin-top:0}.send-card .form{margin-top:14px}@media(max-width:800px){.send-grid{grid-template-columns:1fr}}
 .live-clock{display:inline-flex;align-items:center;gap:12px;margin-top:10px;padding:10px 14px!important;border-radius:14px!important;width:max-content;box-shadow:0 0 22px rgba(0,234,255,.10)}.live-clock b{font-size:20px;color:var(--n);font-variant-numeric:tabular-nums;text-shadow:0 0 12px var(--n)}.live-clock span{font-size:12px;color:var(--text)}.live-clock small{font-size:9px;color:var(--muted);letter-spacing:1.5px}.owner-unlock{opacity:0!important;width:12px;height:12px;padding:0!important;border:0!important;background:transparent!important;position:absolute;right:2px}.top-actions #settingsBtn{font-size:18px;font-weight:900}.owner-unlock:focus{outline:none}@media(max-width:600px){.live-clock{margin:10px auto 0}.live-clock b{font-size:17px}.live-clock span{font-size:10px}}
+
+/* FINAL OWNER BUILD ENHANCEMENTS */
+.profile-wrap{filter:drop-shadow(0 0 28px rgba(0,234,255,.12));isolation:isolate}
+.profile-wrap:before,.profile-wrap:after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+.profile-wrap:before{inset:-2%;border:1px solid rgba(0,234,255,.22);box-shadow:inset 0 0 30px rgba(0,234,255,.10),0 0 45px rgba(110,60,255,.12);animation:profileAura 4s ease-in-out infinite}
+.profile-wrap:after{inset:8%;border:1px solid rgba(255,255,255,.08);border-top-color:var(--n);border-bottom-color:var(--n2);animation:profileOrbit 5.5s linear infinite}
+.profile{transition:transform .45s ease,filter .45s ease;animation:profileFloat 4s ease-in-out infinite;position:relative}
+.profile:hover{transform:scale(1.045) rotate(.8deg);filter:saturate(1.15) contrast(1.06)}
+.hack-ring{border-width:2px 1px 2px 1px;animation:spin 7s linear infinite,ringPulse 2.8s ease-in-out infinite}
+.scan{height:2px;opacity:.9;animation:scan 2.4s linear infinite}
+.profile-label{box-shadow:0 0 18px rgba(0,234,255,.16);animation:labelPulse 2.2s ease-in-out infinite}
+.mini-photo-wrap{position:relative;width:110px;flex:0 0 110px;display:grid;place-items:center}
+.mini-photo-wrap .mini-profile{width:100px;height:100px;animation:profileFloat 4s ease-in-out infinite}
+.mini-btn{border:1px solid var(--n);background:rgba(0,234,255,.08);color:var(--text);border-radius:10px;padding:7px 10px;cursor:pointer;font-weight:800;transition:.25s;box-shadow:0 0 12px rgba(0,234,255,.08)}
+.mini-btn:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 0 22px rgba(0,234,255,.22);color:var(--n)}
+.mini-photo-wrap .mini-btn{position:absolute;bottom:-10px;font-size:9px;letter-spacing:1px;background:#050812;color:#fff}
+.weather-card{display:flex;align-items:center;gap:12px;margin-top:10px;padding:11px 14px!important;width:min(390px,100%);box-shadow:0 0 28px rgba(0,234,255,.10)}
+.weather-icon{font-size:28px;filter:drop-shadow(0 0 10px rgba(0,234,255,.3));animation:weatherFloat 2.8s ease-in-out infinite}
+.weather-card>div:nth-child(2){display:grid;gap:2px;flex:1}.weather-card b{font-size:18px;color:var(--n)}.weather-card span{font-size:11px;color:var(--text)}.weather-card small{font-size:9px;color:var(--muted);letter-spacing:1px}
+.weather-card .mini-btn{width:34px;height:34px;border-radius:50%;padding:0;font-size:16px}
+.btn{position:relative;overflow:hidden;transition:transform .22s ease,box-shadow .22s ease,filter .22s ease}.btn:before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 25%,rgba(255,255,255,.28) 50%,transparent 75%);transform:translateX(-120%);transition:transform .65s ease}.btn:hover{transform:translateY(-3px);box-shadow:0 0 25px rgba(0,234,255,.22);filter:brightness(1.08)}.btn:hover:before{transform:translateX(120%)}.btn.sending{animation:sendPulse .65s ease-in-out infinite;pointer-events:none}.btn.send-ready{box-shadow:0 0 32px rgba(0,234,255,.4)}
+.send-card{transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}.send-card:hover{transform:translateY(-5px);border-color:rgba(0,234,255,.4);box-shadow:0 18px 45px rgba(0,0,0,.22),0 0 30px rgba(0,234,255,.08)}
+.live-clock{animation:clockGlow 3s ease-in-out infinite}.live-clock b{letter-spacing:1px}
+@keyframes profileAura{50%{transform:scale(1.04);opacity:.65}}
+@keyframes profileOrbit{to{transform:rotate(360deg)}}
+@keyframes profileFloat{50%{transform:translateY(-7px)}}
+@keyframes ringPulse{50%{box-shadow:0 0 42px var(--n),0 0 85px rgba(168,77,255,.28)}}
+@keyframes labelPulse{50%{box-shadow:0 0 28px rgba(0,234,255,.28)}}
+@keyframes weatherFloat{50%{transform:translateY(-3px) scale(1.05)}}
+@keyframes clockGlow{50%{box-shadow:0 0 32px rgba(0,234,255,.18)}}
+@keyframes sendPulse{50%{transform:scale(1.02);box-shadow:0 0 28px rgba(0,234,255,.35)}}
+@media(max-width:700px){.weather-card{margin-left:auto;margin-right:auto}.mini-photo-wrap{margin:auto}.gaming-card{text-align:center;flex-direction:column}.mini-photo-wrap{height:116px}.profile-wrap:before{inset:0}.profile-wrap:after{inset:10%}}
+.thanks-page{min-height:100vh;display:grid;place-items:center;padding:24px}.thanks-card{max-width:650px;width:100%;text-align:center;padding:52px 28px;position:relative;overflow:hidden;animation:thanksIn .7s cubic-bezier(.2,.8,.2,1)}.success-orb{width:76px;height:76px;margin:0 auto 18px;border-radius:50%;display:grid;place-items:center;font-size:38px;font-weight:1000;color:#061018;background:linear-gradient(135deg,var(--n),var(--n2));box-shadow:0 0 45px rgba(0,234,255,.3);animation:successPop 1.8s ease-in-out infinite}.thanks-card h1{font-size:clamp(46px,8vw,76px);margin:8px 0}.thanks-card h1 span{background:linear-gradient(90deg,var(--n),var(--n2));-webkit-background-clip:text;color:transparent}.thanks-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:26px}.success-line{height:2px;margin:30px auto 0;max-width:320px;background:rgba(255,255,255,.08);overflow:hidden}.success-line i{display:block;width:40%;height:100%;background:var(--n);box-shadow:0 0 16px var(--n);animation:successLine 2s linear infinite}@keyframes thanksIn{from{opacity:0;transform:translateY(22px) scale(.98)}to{opacity:1;transform:none}}@keyframes successPop{50%{transform:scale(1.06);box-shadow:0 0 65px rgba(0,234,255,.42)}}@keyframes successLine{from{transform:translateX(-120%)}to{transform:translateX(360%)}}
