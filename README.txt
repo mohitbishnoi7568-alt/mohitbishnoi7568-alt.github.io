@@ -27,3 +27,6 @@ Your uploaded profile image has been added as mohit-photo.jpg and used in the he
 
 
 Gallery update: Added themed gaming artwork for Free Fire, BGMI, and Minecraft.
+
+
+Gallery update: Added the six bottom photos from the gaming collage: Free Fire Squad, BGMI Squad, Minecraft Night, Gaming Setup, 5X GAMERR, and Gaming Vibes.
