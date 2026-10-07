@@ -41,3 +41,31 @@ addEventListener('pointermove',e=>{const g=$('#cursorGlow');if(innerWidth<700){g
 function renderW(){let a=S.winners||[];$('#winnerGrid').innerHTML=a.map((x,i)=>`<article class="winner-card"><img src="${x.img}" alt="Winner shot"><b>${esc(x.cap)}</b></article>`).join('')||'<p class="muted">Winner shots coming soon.</p>'}
 const winnerPublicBtn=$('#addWinnerPublic'),winnerGalleryInput=$('#winnerGalleryInput');if(winnerPublicBtn&&winnerGalleryInput){winnerPublicBtn.onclick=()=>{const entered=prompt('Owner PIN for Winner Shot:');if(entered==='7568')winnerGalleryInput.click();else if(entered!==null)alert('Wrong PIN. Winner Shot केवल Owner PIN से add होगा।')};winnerGalleryInput.onchange=e=>{const f=e.target.files[0];if(!f)return;if(f.size>4e6){alert('Photo 4MB से कम रखें');winnerGalleryInput.value='';return}const r=new FileReader();r.onload=()=>{const cap=prompt('Winner caption:', 'Winner Shot');if(cap===null){winnerGalleryInput.value='';return}S.winners=S.winners||[];S.winners.push({img:r.result,cap:cap.trim()||'Winner Shot'});save();renderW();winnerGalleryInput.value='';};r.readAsDataURL(f)}}function renderH(){let a=S.history||[];$('#historyGrid').innerHTML=a.map(x=>`<article class="history-card"><b>${esc(x.game)}</b><p>UID: ${esc(x.uid)}</p><p>Username: ${esc(x.user)}</p></article>`).join('')||'<p class="muted">Gaming history will appear here.</p>'}
 apply();renderW();renderH();
+
+// Owner-only gallery photo replacement: choose any photo for each of the 3 slots.
+(function(){
+  const btn=$('#editGalleryBtn');
+  if(!btn)return;
+  const slots=[['#galleryImg1','#galleryInput1'],['#galleryImg2','#galleryInput2'],['#galleryImg3','#galleryInput3']];
+  btn.onclick=()=>{
+    const entered=prompt('Owner PIN for Gallery Photos:');
+    if(entered!=='7568'){if(entered!==null)alert('Wrong PIN. Gallery Photos केवल Owner PIN से बदल सकते हैं।');return;}
+    const n=prompt('कौन-सी फोटो बदलनी है? 1, 2 या 3','1');
+    const i=Number(n)-1;
+    if(!Number.isInteger(i)||i<0||i>2)return;
+    const input=$(slots[i][1]);
+    input.onchange=e=>{
+      const f=e.target.files&&e.target.files[0]; if(!f)return;
+      if(f.size>5e6){alert('Photo 5MB से कम रखें');input.value='';return;}
+      const r=new FileReader();
+      r.onload=()=>{
+        $(slots[i][0]).src=r.result;
+        try{localStorage.setItem('mohit_gallery_'+(i+1),r.result)}catch(err){alert('Photo बहुत बड़ी है, दूसरी photo चुनें।')}
+        input.value='';
+      };
+      r.readAsDataURL(f);
+    };
+    input.click();
+  };
+  slots.forEach((x,i)=>{const saved=localStorage.getItem('mohit_gallery_'+(i+1));if(saved)$(x[0]).src=saved;});
+})();
