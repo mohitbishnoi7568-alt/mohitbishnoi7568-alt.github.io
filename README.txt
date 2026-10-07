@@ -1,13 +1,31 @@
-MOHIT EDITABLE NEON GAMING WEBSITE
+MOHIT • 5X GAMERR — EDITABLE NEON GAMING PORTFOLIO
 
-Website: https://mohitbishnoi7568-alt.github.io/
+This ZIP keeps the previous editable neon gaming website and adds a few useful optional controls.
 
-Features:
-- Fixed gallery: no zoom/lightbox.
-- Settings drawer for themes, gallery animation, profile photo and song.
-- Winner screenshot + caption manager.
-- Gaming History with Game / UID / Username, add and delete.
-- Share button uses the live website link.
-- Challenge form stores challenger details locally in the visitor's browser.
-- Contact form uses FormSubmit; set the existing FormSubmit email in Settings if needed.
-- Local edits use browser localStorage; they do not change GitHub files automatically.
+EXISTING FEATURES KEPT:
+- Neon themes
+- Gallery animations + fixed/no-zoom gallery
+- Profile photo upload
+- Gaming song upload + play/pause
+- Name, tagline and About editing
+- FormSubmit email setting
+- Challenge Me form
+- Website Share button
+- Winner Shots
+- Gaming History
+- Cyber/hacking-style profile scan animation
+
+NEW EXTRA OPTIONS:
+- Gaming UID shown on Gaming Profile
+- Custom Online Status
+- Lightweight background particles ON/OFF
+- Cursor neon glow ON/OFF (desktop)
+- Tagline typewriter effect ON/OFF
+- Welcome loader ON/OFF
+- Reduce Motion mode ON/OFF
+- Working Dark/Light toggle button in the top bar
+
+IMPORTANT:
+Settings are stored in this browser using localStorage. They do not automatically edit the files on GitHub for other visitors.
+FormSubmit still needs your email to be configured in Settings.
+The challenge form stores submissions locally in the browser; it does not send them to an owner email.
