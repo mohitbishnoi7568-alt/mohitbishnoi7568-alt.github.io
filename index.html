@@ -25,8 +25,9 @@
     <a href="#contact" data-en="Contact" data-hi="संपर्क">Contact</a>
   </nav>
   <div class="nav-actions">
-    <button id="langBtn" class="mini-btn">हिंदी</button>
-    <button id="themeBtn" class="mini-btn">☀️</button>
+    <button id="langBtn" class="mini-btn lang-switch">हिंदी</button>
+    <button id="themeBtn" class="mini-btn icon-btn" aria-label="Toggle theme">☀️</button>
+    <button id="musicBtn" class="mini-btn icon-btn" aria-label="Toggle gallery music">♫</button>
   </div>
 </header>
 
@@ -49,7 +50,7 @@
   </div>
   <div class="hero-card tilt reveal">
     <div class="scanline"></div>
-    <img class="profile-photo" src="gallery-freefire.jpg" alt="Mohit profile photo">
+    <img class="profile-photo" src="mohit-photo.jpg" alt="Mohit profile photo">
     <div class="card-label">5x_gamerr</div>
     <div class="card-sub">NEON PLAYER</div>
   </div>
@@ -107,17 +108,34 @@
   </div>
 </section>
 
-<section id="gallery" class="section alt">
-  <div class="section-head reveal"><span>06</span><h2 data-en="Gallery" data-hi="गैलरी">Gallery</h2></div>
-  <div class="gallery">
-    <div class="gallery-item photo reveal"><img src="gallery-freefire-squad.jpg" alt="Free Fire Squad gaming artwork" loading="lazy"><span>FREE FIRE SQUAD</span></div>
-    <div class="gallery-item photo reveal"><img src="gallery-bgmi-squad.jpg" alt="BGMI Squad gaming artwork" loading="lazy"><span>BGMI SQUAD</span></div>
-    <div class="gallery-item photo reveal"><img src="gallery-minecraft-night.jpg" alt="Minecraft Night gaming artwork" loading="lazy"><span>MINECRAFT NIGHT</span></div>
-    <div class="gallery-item photo reveal"><img src="gallery-gaming-setup.jpg" alt="Gaming Setup artwork" loading="lazy"><span>GAMING SETUP</span></div>
-    <div class="gallery-item photo reveal"><img src="gallery-5x-gamerr.jpg" alt="5X GAMERR artwork" loading="lazy"><span>5X GAMERR</span></div>
-    <div class="gallery-item photo reveal"><img src="gallery-gaming-vibes.jpg" alt="Gaming Vibes artwork" loading="lazy"><span>GAMING VIBES</span></div>
+<section id="gallery" class="section gallery-section">
+  <div class="gallery-hero reveal">
+    <div class="gallery-title-wrap"><div class="gamepad-mark">🎮</div><div><div class="eyebrow">PLAY • EXPLORE • ENJOY</div><h2>GAMING <span>GALLERY</span></h2></div></div>
+    <blockquote>“Gaming is not just a hobby,<br> it’s my lifestyle.” <small>— MOHIT</small></blockquote>
   </div>
+  <div class="pro-gallery">
+    <article class="pro-card reveal" data-title="FREE FIRE" data-desc="Squad • Rank Push • Booyah!">
+      <div class="neon-frame"><img src="gallery-freefire-squad.jpg" alt="Free Fire squad gaming artwork" loading="lazy"><div class="card-shine"></div><div class="game-badge">🔥</div><div class="pro-card-info"><div><b>FREE FIRE</b><small>SQUAD • RANK PUSH • BOOYAH!</small></div><button class="view-btn">View Details →</button></div></div>
+    </article>
+    <article class="pro-card reveal" data-title="BGMI" data-desc="Squad • Rank • Survive">
+      <div class="neon-frame cyan"><img src="gallery-bgmi-squad.jpg" alt="BGMI squad gaming artwork" loading="lazy"><div class="card-shine"></div><div class="game-badge">🎯</div><div class="pro-card-info"><div><b>BGMI</b><small>SQUAD • RANK • SURVIVE</small></div><button class="view-btn">View Details →</button></div></div>
+    </article>
+    <article class="pro-card reveal" data-title="MINECRAFT" data-desc="Build • Explore • Survive">
+      <div class="neon-frame green"><img src="gallery-minecraft-night.jpg" alt="Minecraft night gaming artwork" loading="lazy"><div class="card-shine"></div><div class="game-badge">⬢</div><div class="pro-card-info"><div><b>MINECRAFT</b><small>BUILD • EXPLORE • SURVIVE</small></div><button class="view-btn">View Details →</button></div></div>
+    </article>
+    <article class="pro-card reveal" data-title="GAMING SETUP" data-desc="Dream • Play • Achieve">
+      <div class="neon-frame purple"><img src="gallery-gaming-setup.jpg" alt="Neon gaming setup" loading="lazy"><div class="card-shine"></div><div class="game-badge">🎮</div><div class="pro-card-info"><div><b>GAMING SETUP</b><small>DREAM • PLAY • ACHIEVE</small></div><button class="view-btn">View Details →</button></div></div>
+    </article>
+    <article class="pro-card reveal" data-title="5X GAMERR" data-desc="Gamer • Creator • Student">
+      <div class="neon-frame cyan"><img src="gallery-5x-gamerr.jpg" alt="5X GAMERR gaming artwork" loading="lazy"><div class="card-shine"></div><div class="game-badge">♛</div><div class="pro-card-info"><div><b>5X GAMERR</b><small>GAMER • CREATOR • STUDENT</small></div><button class="view-btn">View Details →</button></div></div>
+    </article>
+    <article class="pro-card reveal" data-title="GAMING VIBES" data-desc="Play • Relax • Repeat">
+      <div class="neon-frame pink"><img src="gallery-gaming-vibes.jpg" alt="Gaming vibes artwork" loading="lazy"><div class="card-shine"></div><div class="game-badge">☆</div><div class="pro-card-info"><div><b>GAMING VIBES</b><small>PLAY • RELAX • REPEAT</small></div><button class="view-btn">View Details →</button></div></div>
+    </article>
+  </div>
+  <div class="gallery-footer-line"><span>🎮</span> LIFE IS BETTER IN <b>GAME MODE</b></div>
 </section>
+<div class="gallery-modal" id="galleryModal" aria-hidden="true"><div class="modal-box"><button class="modal-close" id="modalClose">×</button><img id="modalImg" src="" alt=""><div><h3 id="modalTitle"></h3><p id="modalDesc"></p></div></div></div>
 
 <section id="challenge" class="section">
   <div class="section-head reveal"><span>07</span><h2 data-en="Challenge Me" data-hi="मुझे चैलेंज करो">Challenge Me</h2></div>
