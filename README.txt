@@ -1,32 +1,13 @@
-MOHIT COMPLETE NEON SCHOOL + GAMING WEBSITE
-==============================================
+MOHIT EDITABLE NEON GAMING WEBSITE
 
-Included:
-- Premium dark neon cyan/purple design
-- Hindi / English language toggle
-- Dark / Light mode with localStorage
-- Automatic day/night greeting
-- Live date and time
-- Weather dashboard (Open-Meteo; no API key required)
-- School Life section
-- Gaming Zone
-- Animated gaming video-style cards
-- Gallery placeholders ready for your photos
-- Challenge Me FormSubmit form
-- Contact links: Call, WhatsApp, Instagram
-- Scroll reveal, particles/stars, cursor glow, 3D tilt, scanline and loading animations
-- Responsive mobile/tablet/desktop navigation
+Website: https://mohitbishnoi7568-alt.github.io/
 
-IMPORTANT:
-Replace the gallery placeholder boxes with your own photos if desired.
-The weather uses Jaipur as fallback and tries browser location first.
-Do not publish private information you do not want public.
-
-
-Your uploaded profile image has been added as mohit-photo.jpg and used in the hero and gallery.
-
-
-Gallery update: Added themed gaming artwork for Free Fire, BGMI, and Minecraft.
-
-
-Gallery update: Added the six bottom photos from the gaming collage: Free Fire Squad, BGMI Squad, Minecraft Night, Gaming Setup, 5X GAMERR, and Gaming Vibes.
+Features:
+- Fixed gallery: no zoom/lightbox.
+- Settings drawer for themes, gallery animation, profile photo and song.
+- Winner screenshot + caption manager.
+- Gaming History with Game / UID / Username, add and delete.
+- Share button uses the live website link.
+- Challenge form stores challenger details locally in the visitor's browser.
+- Contact form uses FormSubmit; set the existing FormSubmit email in Settings if needed.
+- Local edits use browser localStorage; they do not change GitHub files automatically.
